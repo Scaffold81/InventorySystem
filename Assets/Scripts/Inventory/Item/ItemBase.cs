@@ -28,7 +28,7 @@ namespace InventoryTest.Inventory
         }
 
         public Action<bool> OnMouseDownCallBack;
-       
+        private bool _isAdded;
 
         private void Awake()
         {
