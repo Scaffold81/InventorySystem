@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Inventory\Backpack\AnchorPoint.cs" />
     <Compile Include="Assets\Scripts\Inventory\Data\ItemData.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item\ItemBase.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Network\InventoryInteractionSend.cs" />
     <Compile Include="Assets\Scripts\Inventory\UI\UIBackInventorySlot.cs" />
     <Compile Include="Assets\Scripts\Inventory\Backpack\BackpackBase.cs" />
   </ItemGroup>

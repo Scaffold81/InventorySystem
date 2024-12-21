@@ -1,3 +1,4 @@
+using InventoryTest.Inventory.Network;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace InventoryTest.Inventory
     /// </summary>
     public class BackpackBase : MonoBehaviour
     {
+        [SerializeField]
+        private InventoryInteractionSend _interactionSend;
         private List<ItemBase> _backpackInventory = new List<ItemBase>();
 
         [SerializeField]
@@ -25,6 +28,12 @@ namespace InventoryTest.Inventory
         {
             get => anchorPoints;
             private set => anchorPoints = value;
+        }
+
+        public InventoryInteractionSend InteractionSend 
+        { 
+            get => _interactionSend;
+            private set => _interactionSend = value; 
         }
 
         public UnityEvent<ItemBase> AddItemEvent;
@@ -45,6 +54,7 @@ namespace InventoryTest.Inventory
             {
                 item.AddToBackpack(emptyAnchorPoint.gameObject);
             }
+            _interactionSend.SendInventoryEvent(item.ItemData.id, "Added");
         }
 
         public void RemoveItem(ItemBase item)
@@ -52,6 +62,7 @@ namespace InventoryTest.Inventory
             item.RemoveFromBackpack();
             _backpackInventory.Remove(item); 
             RemoveItemEvent.Invoke(item);
+            _interactionSend.SendInventoryEvent(item.ItemData.id, "Removed");
         }
     }
 }
